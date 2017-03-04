@@ -525,3 +525,11 @@ for DEVICE in $(cd /dev;ls *cd* *dvd*); do
 	mkdir -p /mnt/$DEVICE
 	echo -e "/dev/$DEVICE\t\t/mnt/$DEVICE\t\tiso9660\tdefaults,ro,noexec,noauto,nodev,nosuid\t0 0" >> /etc/fstab
 done
+
+########################################
+# Require pass minimum of 15 characters.
+# Rule ID:	SV-50275r3_rule
+# Identities:   CCE-27002-5
+#               CCI-000205
+########################################
+sed -i '/^PASS_MIN_LEN/c\PASS_MIN_LEN     15' /etc/login.defs
